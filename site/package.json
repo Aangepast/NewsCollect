@@ -1,0 +1,17 @@
+{
+  "name": "newscollect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "site/logic/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0",
+    "rss-parser": "^3.13.0",
+    "typescript": "^5.6.2"
+  }
+}
