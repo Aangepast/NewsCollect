@@ -8,8 +8,8 @@ import {fileURLToPath} from "url";
 const app = express();
 const PORT = 3000;
 
-// Middleware
-app.use(cors()); // Allow CORS for all origins
+
+app.use(cors()); // cors
 app.use(express.json()); // Parse JSON bodies
 
 // Initialize database

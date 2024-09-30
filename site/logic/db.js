@@ -2,11 +2,9 @@ import sqlite3 from 'sqlite3';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Get the current filename for path resolution
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Create a database in memory or specify a file path
 const dbPath = path.resolve(__dirname, 'feeds.db');
 const db = new sqlite3.Database(dbPath);
 
