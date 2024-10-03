@@ -3,13 +3,16 @@ import { saveFeed } from './db.js';
 
 const parser = new Parser();
 
-async function fetchAndSaveFeeds() {
-    const feeds = [
+async function getWebsites(){
+    return [
         { url: 'https://feeds.nos.nl/nosnieuwsalgemeen', name: 'NOS News' },
         { url: 'https://www.nu.nl/rss/Algemeen', name: 'NU.nl News' },
     ];
+}
 
-    for (const feed of feeds) {
+async function fetchAndSaveFeeds() {
+
+    for (const feed of await getWebsites()) {
         try {
             const parsedFeed = await parser.parseURL(feed.url);
             console.log(`Fetching feed: ${parsedFeed.title}`);
@@ -31,4 +34,4 @@ async function fetchAndSaveFeeds() {
     }
 }
 
-export { fetchAndSaveFeeds };
+export { fetchAndSaveFeeds, getWebsites };

@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import {fetchAndSaveFeeds} from './feedService.js';
+import {fetchAndSaveFeeds, getWebsites} from './feedService.js';
 import {dropFeeds, getFeeds, initializeDB} from './db.js';
 import path from "path";
 import {fileURLToPath} from "url";
@@ -44,6 +44,14 @@ app.get('/feeds', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+app.get('/sites', async (req, res) => {
+    try {
+        res.json(getWebsites());
+    } catch (error) {
+        console.error("Error fetching sites for site:", error);
+    }
+})
 
 // Start the server
 app.listen(PORT, () => {
