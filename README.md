@@ -23,7 +23,7 @@ in `/site/public` is the client-side.
 
 ### How to run:
 
-Make sure to have the dependencies `cors` and `express` installed on your machine.
+Make sure to have the dependencies `cors`, `sqlite3` and `express` installed on your machine.
 
 Navigate in your terminal to direction `/site/logic/` and execute `node index.js`
 
