@@ -5,8 +5,8 @@ const parser = new Parser();
 
 async function getWebsites(){
     return [
-        { url: 'https://feeds.nos.nl/nosnieuwsalgemeen', name: 'NOS News' },
-        { url: 'https://www.nu.nl/rss/Algemeen', name: 'NU.nl News' },
+        { url: 'https://feeds.nos.nl/nosnieuwsalgemeen', name: 'NOS Nieuws' },
+        { url: 'https://www.nu.nl/rss/Algemeen', name: 'NU.nl Nieuws' },
     ];
 }
 
@@ -20,10 +20,11 @@ async function fetchAndSaveFeeds() {
             parsedFeed.items.forEach(item => {
                 const feedItem = {
                     title: item.title || 'No title',
-                    description: item.contentSnippet || 'No description available.',
+                    description: item.contentSnippet || 'Beschrijving niet beschikbaar.',
                     pubDate: item.pubDate || '',
-                    author: item.creator || 'Unknown',
+                    author: item.creator || parsedFeed.title,
                     link: item.link || '#',
+                    copyright: item.copyright || item.rights || parsedFeed.copyright || parsedFeed.title,
                 };
                 saveFeed(feedItem, feed.name);
                 console.log("Saved feed: " + feedItem.title);

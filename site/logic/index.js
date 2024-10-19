@@ -9,31 +9,25 @@ const app = express();
 const PORT = 3000;
 
 
-app.use(cors()); // cors
-app.use(express.json()); // Parse JSON bodies
+app.use(cors());
+app.use(express.json());
 
-// Initialize database
 initializeDB();
 console.log("Database has been initialized");
 
-// Drop existing feeds if needed
 dropFeeds();
 
-// Fetch RSS feeds and save them to the database
 fetchAndSaveFeeds();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve static files from the site/public directory
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Root route to serve the index.html file
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../site/public/index.html'));
 });
 
-// Endpoint to get RSS feeds from the database
 app.get('/feeds', async (req, res) => {
     try {
         const feeds = await getFeeds();
@@ -47,13 +41,13 @@ app.get('/feeds', async (req, res) => {
 
 app.get('/sites', async (req, res) => {
     try {
-        res.json(getWebsites());
+        res.json(await getWebsites());
+        console.log("Given sites")
     } catch (error) {
         console.error("Error fetching sites for site:", error);
     }
 })
 
-// Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

@@ -29,7 +29,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* News Feed */
 .feed {
     display: flex;
     flex-wrap: wrap;
@@ -51,7 +50,6 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* News Item Styles */
 .item-title {
     font-size: 20px;
     margin-bottom: 10px;
